@@ -1,126 +1,154 @@
-<h1 class="ml8">
-  <span class="letters-container">
-    <span class="letters letters-left">Hi</span>
-    <span class="letters bang">!</span>
-  </span>
-  <span class="circle circle-white"></span>
-  <span class="circle circle-dark"></span>
-  <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
-</h1>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<script>
-  anime.timeline({loop: true})
-  .add({
-    targets: '.ml8 .circle-white',
-    scale: [0, 3],
-    opacity: [1, 0],
-    easing: "easeInOutExpo",
-    rotateZ: 360,
-    duration: 1100
-  }).add({
-    targets: '.ml8 .circle-container',
-    scale: [0, 1],
-    duration: 1100,
-    easing: "easeInOutExpo",
-    offset: '-=1000'
-  }).add({
-    targets: '.ml8 .circle-dark',
-    scale: [0, 1],
-    duration: 1100,
-    easing: "easeOutExpo",
-    offset: '-=600'
-  }).add({
-    targets: '.ml8 .letters-left',
-    scale: [0, 1],
-    duration: 1200,
-    offset: '-=550'
-  }).add({
-    targets: '.ml8 .bang',
-    scale: [0, 1],
-    rotateZ: [45, 15],
-    duration: 1200,
-    offset: '-=1000'
-  }).add({
-    targets: '.ml8',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1400
-  });
-
-anime({
-  targets: '.ml8 .circle-dark-dashed',
-  rotateZ: 360,
-  duration: 8000,
-  easing: "linear",
-  loop: true
-});
-</script>
+<div class="content">
+  <div class="content__container">
+    <p class="content__container__text">
+      Welcome
+    </p>
+    
+    <ul class="content__container__list">
+      <li class="content__container__list__item">world !</li>
+      <li class="content__container__list__item">users !</li>
+      <li class="content__container__list__item">everybody !</li>
+      <li class="content__container__list__item">to Deltabug's Home !</li>
+    </ul>
+  </div>
+</div>
 
 <style>
-  h1.ml8 {
-  font-weight: 900;
-  font-size: 4.5em;
-  color: #fff;
-  width: 3em;
-  height: 3em;
+  body {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #34495e;
 }
 
-.ml8 .letters-container {
+.content {
   position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  height: 1em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 160px;
+  overflow:hidden;
+  
+  font-family: 'Lato', sans-serif;
+  font-size: 35px;
+  line-height: 40px;
+  color: #ecf0f1;
+  
+  &__container {
+    font-weight: 600;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 40px;
+
+    &:before {
+      content: '[';
+      left: 0;
+    }
+
+    &:after {
+      content: ']';
+      position: absolute;
+      right: 0;
+    }
+
+    &:after, &:before {
+      position: absolute;
+      top: 0;
+      
+      color: #16a085;
+      font-size: 42px;
+      line-height: 40px;
+      
+      -webkit-animation-name: opacity;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      animation-name: opacity;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+
+    &__text {
+      display: inline;
+      float: left;
+      margin: 0;
+    }
+
+    &__list {
+      margin-top: 0;
+      padding-left: 110px;
+      text-align: left;
+      list-style: none;
+      
+      -webkit-animation-name: change;
+      -webkit-animation-duration: 10s;
+      -webkit-animation-iteration-count: infinite;
+      animation-name: change;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+
+      &__item {
+        line-height:40px;
+        margin:0;
+      }
+    }
+  }
 }
 
-.ml8 .letters {
-  position: relative;
-  z-index: 2;
-  display: inline-block;
-  line-height: 0.7em;
-  right: -0.12em;
-  top: -0.2em;
+@-webkit-keyframes opacity {
+  0%, 100% {opacity:0;}
+  50% {opacity:1;}
 }
 
-.ml8 .bang {
-  font-size: 1.4em;
-  top: auto;
-  left: -0.06em;
+@-webkit-keyframes change {
+  0%, 12.66%, 100% {transform:translate3d(0,0,0);}
+  16.66%, 29.32% {transform:translate3d(0,-25%,0);}
+  33.32%,45.98% {transform:translate3d(0,-50%,0);}
+  49.98%,62.64% {transform:translate3d(0,-75%,0);}
+  66.64%,79.3% {transform:translate3d(0,-50%,0);}
+  83.3%,95.96% {transform:translate3d(0,-25%,0);}
 }
 
-.ml8 .circle {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 0;
-  bottom: 0;
+@-o-keyframes opacity {
+  0%, 100% {opacity:0;}
+  50% {opacity:1;}
 }
 
-.ml8 .circle-white {
-  width: 3em;
-  height: 3em;
-  border: 2px dashed white;
-  border-radius: 2em;
+@-o-keyframes change {
+  0%, 12.66%, 100% {transform:translate3d(0,0,0);}
+  16.66%, 29.32% {transform:translate3d(0,-25%,0);}
+  33.32%,45.98% {transform:translate3d(0,-50%,0);}
+  49.98%,62.64% {transform:translate3d(0,-75%,0);}
+  66.64%,79.3% {transform:translate3d(0,-50%,0);}
+  83.3%,95.96% {transform:translate3d(0,-25%,0);}
 }
 
-.ml8 .circle-dark {
-  width: 2.2em;
-  height: 2.2em;
-  background-color: #4f7b86;
-  border-radius: 3em;
-  z-index: 1;
+@-moz-keyframes opacity {
+  0%, 100% {opacity:0;}
+  50% {opacity:1;}
 }
 
-.ml8 .circle-dark-dashed {
-  border-radius: 2.4em;
-  background-color: transparent;
-  border: 2px dashed #4f7b86;
-  width: 2.3em;
-  height: 2.3em;
+@-moz-keyframes change {
+  0%, 12.66%, 100% {transform:translate3d(0,0,0);}
+  16.66%, 29.32% {transform:translate3d(0,-25%,0);}
+  33.32%,45.98% {transform:translate3d(0,-50%,0);}
+  49.98%,62.64% {transform:translate3d(0,-75%,0);}
+  66.64%,79.3% {transform:translate3d(0,-50%,0);}
+  83.3%,95.96% {transform:translate3d(0,-25%,0);}
+}
+
+@keyframes opacity {
+  0%, 100% {opacity:0;}
+  50% {opacity:1;}
+}
+
+@keyframes change {
+  0%, 12.66%, 100% {transform:translate3d(0,0,0);}
+  16.66%, 29.32% {transform:translate3d(0,-25%,0);}
+  33.32%,45.98% {transform:translate3d(0,-50%,0);}
+  49.98%,62.64% {transform:translate3d(0,-75%,0);}
+  66.64%,79.3% {transform:translate3d(0,-50%,0);}
+  83.3%,95.96% {transform:translate3d(0,-25%,0);}
 }
 </style>
